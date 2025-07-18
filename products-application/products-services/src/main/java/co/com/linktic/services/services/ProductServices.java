@@ -13,6 +13,7 @@ import co.com.linktic.commons.exception.domain.ProductNotFound;
 import co.com.linktic.services.controller.ProductController;
 import co.com.linktic.services.entity.Product;
 import co.com.linktic.services.repository.ProductRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @AllArgsConstructor
+@SecurityRequirement(name = "apiKey")
 public class ProductServices implements ProductController {
 
 
