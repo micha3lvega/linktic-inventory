@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  products-service:
+    build:
+      context: ./products-application/products-services
+    ports:
+      - "8080:8080"
+    environment:
+      - SECURITY_API_KEY=${PRODUCT_API_KEY}
+
+  inventory-service:
+    build:
+      context: ./inventory-application/inventory-services
+    ports:
+      - "8081:8081"
+    environment:
+      - SECURITY_API_KEY=${SECURITY_API_KEY}
+      - PRODUCT_API_KEY=${PRODUCT_API_KEY}
+    depends_on:
+      - products-service
