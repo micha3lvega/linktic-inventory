@@ -37,7 +37,7 @@ public class ProductServices implements ProductController {
 		repository.save(newProduct);
 		log.debug("Nuevo producto creado: {}", newProduct);
 
-		return mapper.map(product, ProductDTO.class);
+		return mapper.map(newProduct, ProductDTO.class);
 	}
 
 	@Override
