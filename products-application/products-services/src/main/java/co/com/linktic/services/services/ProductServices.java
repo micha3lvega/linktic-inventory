@@ -1,7 +1,5 @@
 package co.com.linktic.services.services;
 
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -80,7 +78,7 @@ public class ProductServices implements ProductController {
 		var data = result.getContent().stream().map(product -> {
 			var dto = mapper.map(product, ProductDTO.class);
 			return new JsonApiResponse<>(String.valueOf(dto.getId()), dto);
-		}).collect(Collectors.toList());
+		}).toList();
 
 		return new JsonApiPagedResponse<>(data, result.getTotalPages(), result.getTotalElements(), result.getSize(),
 				result.getNumber());
