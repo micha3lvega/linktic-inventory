@@ -15,6 +15,17 @@ import co.com.linktic.services.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Servicio de dominio para la gestión de productos.
+ *
+ * Esta clase implementa las operaciones declaradas en {@link ProductController} y maneja las funciones principales relacionadas con el modelo {@link Product}, como:
+ *
+ * - Crear un nuevo producto - Buscar producto por ID - Listar productos paginados
+ *
+ * Todas las respuestas están formateadas según el estándar JSON:API, utilizando {@link JsonApiResponse} y {@link JsonApiPagedResponse}.
+ *
+ * Utiliza un {@link ProductRepository} para acceder a la capa de persistencia, y {@link ModelMapper} para convertir entre entidades y DTOs.
+ */
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -23,6 +34,13 @@ public class ProductServices implements ProductController {
 	private ModelMapper mapper;
 	private ProductRepository repository;
 
+	/**
+	 * Obtiene un producto por su ID.
+	 *
+	 * @param id Identificador del producto
+	 * @return Respuesta JSON:API con el producto encontrado
+	 * @throws ProductNotFound si el producto no existe
+	 */
 	@Override
 	public JsonApiResponse<ProductDTO> findByID(Long id) {
 
@@ -32,6 +50,12 @@ public class ProductServices implements ProductController {
 
 	}
 
+	/**
+	 * Crea un nuevo producto en el sistema.
+	 *
+	 * @param product DTO con los datos del nuevo producto
+	 * @return Respuesta JSON:API con el producto creado
+	 */
 	@Override
 	public JsonApiResponse<ProductDTO> create(ProductDTO product) {
 
@@ -45,6 +69,13 @@ public class ProductServices implements ProductController {
 
 	}
 
+	/**
+	 * Obtiene una lista paginada de productos.
+	 *
+	 * @param page Número de página (empezando en 0)
+	 * @param size Cantidad de elementos por página
+	 * @return Respuesta JSON:API con la lista de productos y metadatos de paginación
+	 */
 	@Override
 	public JsonApiPagedResponse<ProductDTO> findProductsPage(int page, int size) {
 
@@ -59,7 +90,5 @@ public class ProductServices implements ProductController {
 		return new JsonApiPagedResponse<>(data, result.getTotalPages(), result.getTotalElements(), result.getSize(),
 				result.getNumber());
 	}
-
-
 
 }
