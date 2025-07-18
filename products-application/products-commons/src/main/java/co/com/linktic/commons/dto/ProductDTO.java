@@ -21,7 +21,7 @@ public class ProductDTO implements Serializable {
 
 	private static final long serialVersionUID = -2758507414819619408L;
 
-	private String id;
+	private Long id;
 
 	@NotBlank(message = "El nombre del producto es obligatorio")
 	@Size(max = 100, message = "El nombre no puede tener más de 100 caracteres")
