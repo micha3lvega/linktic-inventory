@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.com.linktic.commons.dto.JsonApiDocument;
 import co.com.linktic.commons.dto.JsonApiPagedResponse;
-import co.com.linktic.commons.dto.JsonApiResponse;
 import co.com.linktic.commons.dto.ProductDTO;
 
 @RestController
@@ -21,10 +21,10 @@ public interface ProductController {
 			@RequestParam(defaultValue = "10") int size);
 
 	@GetMapping("/{id}")
-	JsonApiResponse<ProductDTO> findByID(@PathVariable Long id);
+	JsonApiDocument<ProductDTO> findByID(@PathVariable Long id);
 
 	@PostMapping
-	JsonApiResponse<ProductDTO> create(@RequestBody ProductDTO product);
+	JsonApiDocument<ProductDTO> create(@RequestBody ProductDTO product);
 
 
 }
