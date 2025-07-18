@@ -2,6 +2,7 @@ package co.com.linktic.services.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public interface ProductController {
 			@RequestParam(defaultValue = "10") int size);
 
 	@GetMapping("/{id}")
-	ProductDTO findByID(Long id);
+	ProductDTO findByID(@PathVariable(required = true) Long id);
 
 	@PostMapping
 	ProductDTO create(@RequestBody ProductDTO product);
