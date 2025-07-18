@@ -8,8 +8,8 @@ public class JsonApiPagedResponse<T> implements Serializable {
 
 	private static final long serialVersionUID = -519354209251487874L;
 
-	private final List<JsonApiResponse<T>> data;
-	private final Map<String, Object> meta;
+	private List<JsonApiResponse<T>> data;
+	private Map<String, Object> meta;
 
 	public JsonApiPagedResponse(List<JsonApiResponse<T>> data, int totalPages, long totalElements, int size,
 			int number) {
