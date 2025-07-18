@@ -1,16 +1,15 @@
 package co.com.linktic.commons.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class JsonApiDocument<T> {
-	private final JsonApiResponse<T> data;
 
-	public JsonApiDocument(JsonApiResponse<T> data) {
-		this.data = data;
-	}
+	private JsonApiResponse<T> data;
 
-	public JsonApiResponse<T> getData() {
-		return data;
-	}
+
 }
